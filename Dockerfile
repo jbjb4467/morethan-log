@@ -8,9 +8,9 @@ RUN yarn
 
 COPY . .
 
-RUN printf "$NOTION_PAGE_ID" >> .env.production
-RUN printf "$GOOGLE_MEASUREMENT_ID" >> .env.production
-RUN printf "$GOOGLE_SITE_VERIFICATOIN" >> .env.production
+RUN printf NOTION_PAGE_ID >> .env.production
+RUN printf GOOGLE_MEASUREMENT_ID >> .env.production
+RUN printf GOOGLE_SITE_VERIFICATOIN >> .env.production
 
 RUN yarn build
 
