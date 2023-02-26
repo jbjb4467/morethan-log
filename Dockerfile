@@ -12,9 +12,9 @@ ARG NOTION_PAGE_ID
 ARG GOOGLE_MEASUREMENT_ID
 ARG GOOGLE_SITE_VERIFICATOIN
 
-RUN printf NOTION_PAGE_ID >> .env.production
-RUN printf GOOGLE_MEASUREMENT_ID >> .env.production
-RUN printf GOOGLE_SITE_VERIFICATOIN >> .env.production
+RUN printf ${NOTION_PAGE_ID} >> .env.production
+RUN printf ${GOOGLE_MEASUREMENT_ID} >> .env.production
+RUN printf ${GOOGLE_SITE_VERIFICATOIN} >> .env.production
 RUN ["cat", ".env.production" ]
 
 RUN yarn build
