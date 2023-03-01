@@ -7,16 +7,21 @@ import { TPost } from "../types"
 import CustomError from "../containers/CustomError"
 
 export async function getStaticPaths() {
-  const posts = await getPosts()
-  const filteredPost = filterPosts(posts, {
-    acceptStatus: ["Public", "PublicOnDetail"],
-    acceptType: ["Paper", "Post", "Page"],
-  })
+  try {
+    const posts = await getPosts()
+    const filteredPost = filterPosts(posts, {
+      acceptStatus: ["Public", "PublicOnDetail"],
+      acceptType: ["Paper", "Post", "Page"],
+    })
 
-  return {
-    paths: filteredPost.map((row) => `/${row.slug}`),
-    fallback: true,
+    return {
+      paths: filteredPost.map((row) => `/${row.slug}`),
+      fallback: true,
+    }
+  } catch (error) {
+    return
   }
+  
 }
 
 export async function getStaticProps({ params: { slug } }: any) {
